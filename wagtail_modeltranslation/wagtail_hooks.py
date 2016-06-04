@@ -52,15 +52,15 @@ def return_translation_target_field_rendered_html(request, page_id):
         # Patch field prefixes from origin field to target field
         target_field_patched = []
         for item in origin_field_serialized:
-            patched_item = None
+            patched_item = {}
             for att in iteritems(item):
                 target_value = att[1]
                 if att[0] == 'name':
                     target_value = att[1].replace(
                         origin_field_name, target_field_name)
-                    patched_item = {"name": target_value}
+                    patched_item['name'] = target_value
                 else:
-                    patched_item["value"] = att[1]
+                    patched_item['value'] = att[1]
 
             target_field_patched.append(patched_item)
 
@@ -114,5 +114,5 @@ def streamfields_translation_copy():
 @hooks.register('insert_editor_css')
 def modeltranslation_page_editor_css():
     return format_html('<link rel="stylesheet" href="' \
-        + settings.STATIC_URL \
-        + 'modeltranslation/css/page_editor_modeltranslation.css" >')
+                       + settings.STATIC_URL \
+                       + 'modeltranslation/css/page_editor_modeltranslation.css" >')
