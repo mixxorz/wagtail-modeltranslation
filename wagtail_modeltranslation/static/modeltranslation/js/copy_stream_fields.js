@@ -51,7 +51,7 @@ function requestCopyField(originID, targetID) {
   if (window.location.pathname.indexOf('pages') > -1) {
     serializedForm = $('#page-edit-form').serializeArray();
   } else {
-    serializeForm = $($('form')[1]).serializeArray();
+    serializedForm = $($('form')[1]).serializeArray();
   }
   var serializedOriginField = $.grep(serializedForm, function (obj) {return obj.name.indexOf(originID) >= 0;});
 
