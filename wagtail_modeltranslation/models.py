@@ -62,8 +62,7 @@ def autodiscover():
 
     # After all models being registered the Page subclasses and snippets are patched
     for model in translator.get_registered_models():
-        if issubclass(model, Page) or model in get_snippet_models():
-            WagtailTranslator(model)
+        WagtailTranslator(model)
 
     # In debug mode, print a list of registered models and pid to stdout.
     # Note: Differing model order is fine, we don't rely on a particular
